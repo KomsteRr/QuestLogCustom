@@ -4,7 +4,7 @@ services:
   mongodb:
     image: mongo:latest
     ports:
-      - "27017:27017"
+      - "42017:27017"
     volumes:
       - mongodb_data:/data/db
       - ./mongo-init:/docker-entrypoint-initdb.d
@@ -16,7 +16,7 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "4200:3000"
     environment:
       - REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID}
       - REACT_APP_PROD=${REACT_APP_PROD}
@@ -28,7 +28,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "4201:3001"
     environment:
       - MONGODB_URI=${MONGODB_URI} 
       - CLIENT=${CLIENT}
